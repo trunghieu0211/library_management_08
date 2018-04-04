@@ -1,2 +1,9 @@
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      login_register: "Login / Register"
+      home: "Home"
+      user: "User"
+      settings: "Settings"
+      logout: "Log out"
+      banner: "Welcome to Library"
