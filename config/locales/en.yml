@@ -10,6 +10,8 @@ en:
       settings: "Settings"
       logout: "Log out"
       banner: "Welcome to Library"
+    banner:
+      welcome: "Welcome to Library"
   devise:
     sessions:
       new:
@@ -48,4 +50,13 @@ en:
     confirmations:
       new:
         resend: "Resend confirmation instructions"
+  static_pages:
+    home:
+      shop: "Shop"
+      books: "Books"
+      collection: "Collection"
+      quick_view: "Quick view"
+      top_categories: "Top Books Catagories"
+      view_all: "View all"
+
 

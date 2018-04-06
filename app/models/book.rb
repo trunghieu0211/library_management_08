@@ -7,4 +7,6 @@ class Book < ApplicationRecord
   has_many :rates
   has_many :requestBooks
   has_many :relationships, as: :following
+
+  scope :book_order, ->{order created_at: :desc}
 end

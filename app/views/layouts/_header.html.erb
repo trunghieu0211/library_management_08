@@ -20,29 +20,21 @@
 <% else %>
 <nav class="nav-holder style-1">
   <div class="container">
-      <div class="navigation">
-        <ul>
-          <li class="active">
-            <a href="#"><i class="fa fa-home"></i><%= t ".home" %></a>
-          </li>
-           <li class="dropdown-icon">
-        <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
-        <ul>
-          <li><a href="author.html"><%= t ".settings" %></a></li>
-          <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </li>
-        </ul>
-      </div>
+    <div class="navigation">
+      <ul>
+        <li class="active">
+          <a href="#"><i class="fa fa-home"></i><%= t ".home" %></a>
+        </li>
+         <li class="dropdown-icon">
+      <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
+      <ul>
+        <li><a href="author.html"><%= t ".settings" %></a></li>
+        <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
+      </ul>
     </div>
   </div>
 </nav>
 <% end %>
-<!-- <div class="parallax-window inner-banner tc-padding overlay-dark" data-parallax="scroll" data-image-src=<%= asset_path "banner.jpg" %>>
-  <div class="container">
-    <div class="inner-page-heading h-white">
-      <h2><%= t ".banner" %></h2>
-    </div>
-  </div>
-</div> -->
 
