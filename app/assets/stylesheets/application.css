@@ -10,6 +10,7 @@
 *= require responsive
 *= require transition
 *= require switcher
+*= require custom
 *= require_self
 */
 

@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> dialog-2">
+    <ul>
+      <li>
+        <%= value %>
+      </li>
+    </ul>
+  </div>
+<% end %>
