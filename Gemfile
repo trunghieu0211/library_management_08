@@ -7,18 +7,20 @@ end
 
 
 gem "coffee-rails", "~> 4.2"
+gem "config", "~> 1.4"
 gem "devise"
+gem "ffaker"
 gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
+gem "jquery-rails", "~> 4.3", ">= 4.3.1"
+gem "kaminari"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.6"
 gem "sass-rails", "~> 5.0"
 gem "sqlite3"
+gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem 'config', '~> 1.4'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'toastr-rails'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -5,3 +5,5 @@ user:
   number_user_follower: 3
   min_password_length: 6
   max_password_length: 20
+book:
+  number_book_page: 12
