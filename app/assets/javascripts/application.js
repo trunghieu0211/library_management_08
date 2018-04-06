@@ -25,5 +25,6 @@
 //= require turn.js
 //= require wow-min.js
 //= require colorswitcher
+//= require custom.js
 //= require cookie
 
