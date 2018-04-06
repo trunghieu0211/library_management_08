@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
+//= require toastr
 //= require vendor/bootstrap.min
 //= require vendor/jquery
 //= require vendor/modernizr.js

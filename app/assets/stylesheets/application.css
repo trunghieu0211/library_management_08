@@ -2,6 +2,7 @@
 *= require style
 *= require bootstrap/bootstrap.min
 *= require animate
+*= require toastr
 *= require color-1
 *= require default
 *= require font-awesome

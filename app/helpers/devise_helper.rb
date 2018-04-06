@@ -3,9 +3,9 @@ module DeviseHelper
     return "" if resource.errors.empty?
     messages = resource.errors.full_messages.map{|message| content_tag(:li, message)}.join
     html = <<-HTML
-      <div class="alert alert-error alert-danger dialog">
-        #{messages}
-      </div>
+      <script type="text/javascript">
+        toastr.error('#{messages}');
+      </script>
     HTML
     html.html_safe
   end
