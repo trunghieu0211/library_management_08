@@ -114,4 +114,15 @@ en:
         permission: "Permission"
         edit_delete: "Edit/Delete"
         sure: "Are you sure?"
+      edit:
+        edit_user: "EDIT USER"
+        edit: "Edit"
+      update:
+        success: "Update user success!"
+        fail: "Update user fail"
+      form:
+        update_password: "Update password"
+      destroy:
+        delete_success: "Delete user success"
+        delete_failed: "Delete user fail"
 

@@ -18,6 +18,7 @@
       placeholder: "Enter a email.." %>
     </div>
   </div>
+  <% unless yield(:button) == "Edit" %>
   <div class="field form-group row">
     <div class="col-lg-3 col-form-label">
       <%= f.label :password %><span class="text-danger">*</span>
@@ -36,13 +37,41 @@
         class: "form-control", placeholder: "Enter password confirmation" %>
     </div>
   </div>
+  <% end %>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label" for="val-skill">Permission </label>
     <div class="col-lg-8">
-      <%= f.select(:permision, options_for_select([["Admin", 1], ["Manager", 2], ["User", 0]]),{include_blank: true}, {:class => "form-control"}) %>
+      <%= f.select(:permision, options_for_select([["Admin", 1], ["Manager", 2], ["User", 0]], :selected => f.object.permision),{include_blank: true}, {:class => "form-control"}) %>
     </div>
   </div>
   <div class="actions form-group">
       <%= f.submit yield(:button), class: "btn btn-primary" %>
   </div>
+<% end %>
+
+<% if yield(:button) == "Edit" %>
+<h2><%= t ".update_password" %></h2>
+<%= form_for [:admin, @user], :html => {:class => "form-valide-2"} do |f| %>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :password %><span class="text-danger">*</span>
+    </div>
+    <div class="col-md-8">
+    <%= f.password_field :password, class: "form-control",
+      placeholder: "Enter a password.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :password_confirmation %><span class="text-danger">*</span>
+    </div>
+    <div class="col-md-8">
+      <%= f.password_field :password_confirmation, autocomplete: "off",
+        class: "form-control", placeholder: "Enter password confirmation" %>
+    </div>
+  </div>
+  <div class="actions form-group">
+      <%= f.submit t(".update_password"), class: "btn btn-primary" %>
+  </div>
+<% end %>
 <% end %>

@@ -1,7 +1,7 @@
 user:
   name_max_size: 20
   phone_max_size: 15
-  user_number: 5
+  user_number: 12
   number_user_follower: 3
   min_password_length: 6
   max_password_length: 20

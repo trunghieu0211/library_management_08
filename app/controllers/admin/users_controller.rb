@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_user, except: %i(new index create)
 
   def index
-    @users = User.all.page(params[:page]).per 12
+    @users = User.all.user_order.page(params[:page]).
+      per Settings.user.user_number
   end
 
   def new
@@ -22,13 +23,34 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit
-    @user = User.find_by id: params[:id]
   end
 
   def update
+    if @user.update_attributes(user_params_update_password) && @user.password
+      flash[:success] = "Update password success!"
+      redirect_to admin_users_path
+    elsif @user.update_attributes user_params_edit_not_password
+      flash[:success] = t ".success"
+      redirect_to admin_users_path
+    else
+      flash.now[:danger] = t ".fail"
+      render :edit
+    end
   end
 
   def destroy
+    if @user.destroy
+      flash.now[:success] = t ".delete_success"
+      respond_to do |format|
+        format.html {
+          redirect_to admin_users_path
+        }
+        format.js
+      end
+    else
+      flash.now[:danger] = t ".delete_failed"
+      redirect_to admin_users_path
+    end
   end
 
   private
@@ -36,6 +58,15 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation, :permision
+  end
+
+  def user_params_edit_not_password
+    params.require(:user).permit :name, :email, :permision
+  end
+
+  def user_params_update_password
+    params.require(:user).permit :password,
+      :password_confirmation
   end
 
   def load_user

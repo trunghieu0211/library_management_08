@@ -1,2 +1,16 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<% provide :title, t(".edit_user") %>
+<% provide :button, t(".edit") %>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-validation">
+            <%= render "form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
