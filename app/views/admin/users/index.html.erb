@@ -6,8 +6,10 @@
         <div class="table-responsive m-t-40">
           <div id="example23_wrapper" class="dataTables_wrapper">
             <div class="dt-buttons">
-              <a class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example23" href="#">
-                <span><%= t ".csv" %></span>
+              <span><%= link_to t(".csv"), admin_users_path(format: "csv"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
+              <span><%= link_to t(".excel"), admin_users_path(format: "xls"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
               </a>
             </div>
           <div id="example23_filter" class="dataTables_filter">

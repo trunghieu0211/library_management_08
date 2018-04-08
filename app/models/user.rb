@@ -12,4 +12,13 @@ class User < ApplicationRecord
 
   validates :name, length: {maximum: Settings.user.name_max_size}
   validates :phone, length: {maximum: Settings.user.phone_max_size}
+
+  def self.to_csv options = {}
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |user|
+        csv << user.attributes.values_at(*column_names)
+      end
+    end
+  end
 end
