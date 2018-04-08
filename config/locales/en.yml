@@ -58,5 +58,43 @@ en:
       quick_view: "Quick view"
       top_categories: "Top Books Catagories"
       view_all: "View all"
-
+  admin:
+    base:
+      verify_admin:
+        permission: "you don't have permission to access to this page"
+        login_admin_success: "Hi Admin, welcome to back"
+    layouts:
+      admin:
+        app: "Welcome to Admin Page"
+      header:
+        admin: "ADMIN"
+        profile: "Profile"
+        setting: "Settings"
+        logout: "Logout"
+        library: "Go to library"
+      navbar:
+        home: "HOME"
+        dashboard: "Dashboard"
+        user: "User"
+        category: "Category"
+        book: "Book"
+        author: "Author"
+        publisher: "Publisher"
+        request: "Request"
+        list: "List"
+        create: "Create"
+    static_pages:
+      home:
+        home: "HOME"
+        admin: "ADMIN"
+        dashboard: "Dashboard"
+        user: "User"
+        category: "Category"
+        book: "Book"
+        author: "Author"
+        publisher: "Publisher"
+        request: "Request"
+        welcome: "Welcome admin!"
+        login: "PLease login website!"
+        permission: "You don't have permission to access to this page"
 

@@ -1,0 +1,89 @@
+<div class="row page-titles">
+  <div class="col-md-5 align-self-center">
+      <h3 class="text-primary"><%= t ".dashboard" %></h3>
+  </div>
+  <div class="col-md-7 align-self-center">
+    </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-user f-s-40 color-primary"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @users.size %></h2>
+            <p class="m-b-0"><%= t ".user" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-columns f-s-40 color-success"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @categories.size %></h2>
+            <p class="m-b-0"><%= t ".category" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-book f-s-40 color-warning"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @books.size %></h2>
+            <p class="m-b-0"><%= t ".book" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-user f-s-40 color-primary"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @authors.size %></h2>
+            <p class="m-b-0"><%= t ".author" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-book f-s-40 color-warning"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @publishers.size %></h2>
+            <p class="m-b-0"><%= t ".publisher" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-30">
+        <div class="media">
+          <div class="media-left meida media-middle">
+            <span><i class="fa fa-suitcase f-s-40 color-danger"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2><%= @requests.size %></h2>
+            <p class="m-b-0"><%= t ".request" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

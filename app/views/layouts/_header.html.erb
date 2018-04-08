@@ -29,6 +29,9 @@
       <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
       <ul>
         <li><a href="author.html"><%= t ".settings" %></a></li>
+        <% if current_user.permision == 1 %>
+          <li><%= link_to t(".admin"), admin_root_path %></li>
+        <% end %>
         <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
       </ul>
     </li>
