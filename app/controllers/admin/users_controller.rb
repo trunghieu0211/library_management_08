@@ -1,5 +1,8 @@
 class Admin::UsersController < Admin::BaseController
+  before_action :load_user, except: %i(new index create)
+
   def index
+    @users = User.all.page(params[:page]).per 12
   end
 
   def new
@@ -33,5 +36,11 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation, :permision
+  end
+
+  def load_user
+    @user = User.find_by id: params[:id]
+
+    render file: "public/404.html", layout: false unless @user
   end
 end

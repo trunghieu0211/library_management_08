@@ -1,2 +1,56 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<% provide :title, t(".list_user") %>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"><%= t ".date_export" %></h4>
+        <div class="table-responsive m-t-40">
+          <div id="example23_wrapper" class="dataTables_wrapper">
+            <div class="dt-buttons">
+              <a class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example23" href="#">
+                <span><%= t ".csv" %></span>
+              </a>
+            </div>
+          <div id="example23_filter" class="dataTables_filter">
+            <label><%= t ".search" %><input type="search" class="" placeholder="" aria-controls="example23"></label>
+          </div>
+          <%= paginate @users %>
+          <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+            <thead>
+              <tr role="row">
+                <th><%= t ".name" %></th>
+                <th><%= t ".email" %></th>
+                <th><%= t ".permission" %></th>
+                <th><%= t ".edit_delete" %></th>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr role="row" class="odd">
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td>
+                    <% if user.permision == 0 %>
+                      <%= t ".user" %>
+                    <% elsif user.permision == 1 %>
+                      <%= t ".admin" %>
+                    <% else %>
+                      <%= t ".manager" %>
+                    <% end %>
+                  </td>
+                  <td class="edit_destroy">
+                    <%= link_to edit_admin_user_path user do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to admin_user_path user, method: :delete, data:{confirm: t(".sure")} do %>
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
+          <%= paginate @users %>
+        </div>
+    </div>
+  </div>
+</div>
+

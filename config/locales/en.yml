@@ -104,4 +104,14 @@ en:
       new:
         create_user: "CREATE USER"
         create: "Create"
+      index:
+        list_user: "LIST USER"
+        data_export: "Date Export"
+        csv: "CSV"
+        search: "Search:"
+        name: "Name"
+        email: "Email"
+        permission: "Permission"
+        edit_delete: "Edit/Delete"
+        sure: "Are you sure?"
 
