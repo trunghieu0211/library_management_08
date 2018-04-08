@@ -7,4 +7,5 @@
 *= require admin_ela/semantic.ui.min
 *= require admin_ela/style
 *= require font-awesome
+*= require toastr
 */

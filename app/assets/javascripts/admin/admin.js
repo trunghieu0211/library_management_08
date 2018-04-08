@@ -1,7 +1,7 @@
 //= require rails-ujs
-//= require turbolinks
 //= require jquery3
 //= require jquery_ujs
+//= require toastr
 //= require admin_ela/bootstrap.min.js
 //= require admin_ela/custom.min.js
 //= require admin_ela/dashboard1-init.js
@@ -20,3 +20,5 @@
 //= require admin_ela/semantic.ui.min.js
 //= require admin_ela/sidebarmenu.js
 //= require admin_ela/sticky-kit.min.js
+//= require admin/jquery.validate.min.js
+//= require admin/jquery.validate-init.js

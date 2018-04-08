@@ -97,4 +97,11 @@ en:
         welcome: "Welcome admin!"
         login: "PLease login website!"
         permission: "You don't have permission to access to this page"
+    users:
+      create:
+        create_user_success: "Create user success!"
+        create_user_fail: "Create user fail"
+      new:
+        create_user: "CREATE USER"
+        create: "Create"
 

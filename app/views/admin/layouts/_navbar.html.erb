@@ -4,12 +4,15 @@
       <ul id="sidebarnav">
         <li class="nav-devider"></li>
         <li class="nav-label"><%= t ".home" %></li>
-        <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu"><%= t ".dashboard" %> </a>
+        <li>
+          <%= link_to admin_root_path do %>
+            <i class="fa fa-tachometer"><%= t ".dashboard" %></i>
+          <% end %>
         </li>
         <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu"><%= t ".user" %></span></a>
           <ul aria-expanded="false" class="collapse">
-            <li><a href="#"><%= t ".list" %></a></li>
-            <li><a href="#"><%= t ".create" %></a></li>
+            <li><%= link_to t(".list"), admin_users_path %></li>
+            <li><%= link_to t(".create"), new_admin_user_path %></li>
           </ul>
         </li>
         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu"><%= t ".category" %></span></a>
