@@ -35,6 +35,10 @@ var form_validation = function() {
                         required: !0,
                         maxlength: 30
                     },
+                    "author[name]":{
+                        required: !0,
+                        maxlength: 30
+                    },
                     "val-email": {
                         required: !0,
                         email: !0
@@ -98,6 +102,10 @@ var form_validation = function() {
                     "category[name]":{
                         required: "Please enter a category name",
                         maxlength: "Category is too long(maximum is 30 characters)"
+                    },
+                    "author[name]":{
+                        required: "Please enter a author name",
+                        maxlength: "Author name is too long(maximum is 30 characters)"
                     },
                     "val-email": "Please enter a valid email address",
                     "val-password": {

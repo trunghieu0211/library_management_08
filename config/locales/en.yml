@@ -148,4 +148,11 @@ en:
       edit:
         edit_category: "EDIT CATEGORY"
         edit: "Edit"
+    authors:
+      create:
+        create_author_success: "Create author success!"
+        create_author_fail: "Create author fail"
+      new:
+        create_author: "CREATE AUTHOR"
+        create: "Create"
 

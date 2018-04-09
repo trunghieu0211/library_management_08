@@ -10,3 +10,5 @@ book:
 category:
   category_max_size: 30
   number_category_page: 10
+author:
+  author_max_size: 30

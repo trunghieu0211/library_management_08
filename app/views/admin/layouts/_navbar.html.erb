@@ -29,8 +29,8 @@
         </li>
         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu"><%= t ".author" %></span></a>
           <ul aria-expanded="false" class="collapse">
-            <li><a href="#"><%= t ".list" %></a></li>
-            <li><a href="#"><%= t ".create" %></a></li>
+            <li><%= link_to t(".list"), admin_authors_path %></li>
+            <li><%= link_to t(".create"), new_admin_author_path %></li>
           </ul>
         </li>
         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu"><%= t ".publisher" %></span></a>
