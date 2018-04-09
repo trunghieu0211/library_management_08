@@ -2,6 +2,15 @@ class Admin::AuthorsController < Admin::BaseController
   before_action :load_author, except: %i(new index create)
 
   def index
+    @q = Author.ransack(params[:q])
+    @authors = @q.result(distinct: true).author_order.page(params[:page]).
+      per Settings.author.number_author_page
+    @allAuthor = Author.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @allAuthor.to_csv}
+      format.xls {send_data @allAuthor.to_csv(col_sep: "\t")}
+    end
   end
 
   def new
