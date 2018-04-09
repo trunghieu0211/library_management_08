@@ -32,6 +32,31 @@ class Admin::PublishersController < Admin::BaseController
   def edit
   end
 
+  def update
+    if @publisher.update_attributes publisher_params
+      flash[:success] = t ".success"
+      redirect_to admin_publishers_path
+    else
+      flash.now[:danger] = t ".fail"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @publisher.destroy
+      flash.now[:success] = t ".delete_success"
+      respond_to do |format|
+        format.html {
+          redirect_to admin_publishers_path
+        }
+        format.js
+      end
+    else
+      flash.now[:danger] = t ".delete_failed"
+      redirect_to admin_publishers_path
+    end
+  end
+
   private
 
   def publisher_params
