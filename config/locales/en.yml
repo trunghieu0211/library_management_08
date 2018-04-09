@@ -171,4 +171,27 @@ en:
       edit:
         edit_author: "EDIT AUTHOR"
         edit: "Edit"
+    publishers:
+      create:
+        create_publisher_success: "Create publisher success!"
+        create_publisher_fail: "Create publisher fail"
+      new:
+        create_publisher: "CREATE PUBLISHER"
+        create: "Create"
+      index:
+        list_publisher: "LIST PUBLISHER"
+        data_export: "Date Export"
+        csv: "CSV"
+        excel: "Excel"
+        edit_delete: "Edit/Delete"
+        sure: "Are you sure?"
+      update:
+        success: "Update publisher success!"
+        fail: "Update publisher fail"
+      destroy:
+        delete_success: "Delete publisher success"
+        delete_failed: "Delete publisher fail"
+      edit:
+        edit_publisher: "EDIT PUBLISHER"
+        edit: "Edit"
 

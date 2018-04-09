@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :users
     resources :categories
     resources :authors
+    resources :publishers
   end
 end

@@ -13,3 +13,6 @@ category:
 author:
   author_max_size: 30
   number_author_page: 10
+publisher:
+  publisher_max_size: 40
+  number_publisher_page: 10

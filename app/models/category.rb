@@ -3,7 +3,7 @@ class Category < ApplicationRecord
 
   scope :category_order, ->{order created_at: :desc}
 
-  validates :name, presence: true, length:{maximum: Settings.category.category_max_size}
+  validates :name, presence: true, uniqueness: true, length:{maximum: Settings.category.category_max_size}
 
   def self.to_csv options = {}
     CSV.generate(options) do |csv|
