@@ -21,6 +21,7 @@ gem "sqlite3"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "ransack", :git => "git://github.com/ernie/ransack.git"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

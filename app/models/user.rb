@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  enum permision: [:user, :admin, :manager]
+
   scope :user_order, ->{order created_at: :desc}
 
   has_many :reviews, dependent: :destroy

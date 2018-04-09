@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_user, except: %i(new index create)
 
   def index
-    @users = User.all.user_order.page(params[:page]).
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).user_order.page(params[:page]).
       per Settings.user.user_number
     @allUser = User.all
     respond_to do |format|

@@ -41,7 +41,7 @@
   <div class="form-group row">
     <label class="col-lg-3 col-form-label" for="val-skill">Permission </label>
     <div class="col-lg-8">
-      <%= f.select(:permision, options_for_select([["Admin", 1], ["Manager", 2], ["User", 0]], :selected => f.object.permision),{include_blank: true}, {:class => "form-control"}) %>
+      <%= f.select(:permision, options_for_select(["admin", "manager", "user"], :selected => f.object.permision),{include_blank: true}, {:class => "form-control"}) %>
     </div>
   </div>
   <div class="actions form-group">

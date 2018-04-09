@@ -13,7 +13,18 @@
               </a>
             </div>
           <div id="example23_filter" class="dataTables_filter">
-            <label><%= t ".search" %><input type="search" class="" placeholder="" aria-controls="example23"></label>
+            <%= search_form_for @q, url: admin_users_path do |f| %>
+              <%= f.label :name %>
+              <%= f.search_field :name_cont %>
+
+              <%= f.label :email %>
+              <%= f.search_field :email_cont %>
+
+              <%= f.label :permission %>
+              <%= f.select :permision_cont,
+                options_for_select({"admin" => "1", "manager" => "2", "user" => "0"}), {include_blank: ""} %>
+              <%= f.submit %>
+            <% end %>
           </div>
           <%= paginate @users %>
           <table class="display nowrap table table-hover table-striped table-bordered dataTable">
@@ -29,15 +40,7 @@
                 <tr role="row" class="odd" id="user-<%= user.id %>" >
                   <td><%= user.name %></td>
                   <td><%= user.email %></td>
-                  <td>
-                    <% if user.permision == 0 %>
-                      <%= t ".user" %>
-                    <% elsif user.permision == 1 %>
-                      <%= t ".admin" %>
-                    <% else %>
-                      <%= t ".manager" %>
-                    <% end %>
-                  </td>
+                  <td><%= user.permision %></td>
                   <td class="edit_destroy">
                     <%= link_to edit_admin_user_path user do %>
                       <i class="fa fa-pencil" aria-hidden="true"></i>

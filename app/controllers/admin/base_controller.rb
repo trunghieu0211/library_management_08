@@ -9,7 +9,7 @@ class Admin::BaseController < ActionController::Base
     if !user_signed_in?
       flash[:error] = t ".login"
       redirect_to new_user_session_path
-    elsif current_user.permision == 1
+    elsif current_user.permision == "admin" || current_user.permision == "manager"
 
     else
       flash[:error] = t ".permission"
