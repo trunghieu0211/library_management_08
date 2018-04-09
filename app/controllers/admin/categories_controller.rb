@@ -2,6 +2,15 @@ class Admin::CategoriesController < Admin::BaseController
   before_action :load_category, except: %i(new index create)
 
   def index
+    @q = Category.ransack(params[:q])
+    @categories = @q.result(distinct: true).category_order.page(params[:page]).
+      per Settings.category.number_category_page
+    @allCategory = Category.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @allCategory.to_csv}
+      format.xls {send_data @allCategory.to_csv(col_sep: "\t")}
+    end
   end
 
   def new

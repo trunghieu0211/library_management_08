@@ -9,3 +9,4 @@ book:
   number_book_page: 12
 category:
   category_max_size: 30
+  number_category_page: 10

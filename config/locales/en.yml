@@ -132,5 +132,12 @@ en:
       new:
         create_category: "CREATE CATEGORY"
         create: "Create"
+      index:
+        list_category: "LIST USER"
+        data_export: "Date Export"
+        csv: "CSV"
+        excel: "Excel"
+        edit_delete: "Edit/Delete"
+        sure: "Are you sure?"
 
 
