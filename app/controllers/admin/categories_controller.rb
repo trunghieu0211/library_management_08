@@ -33,9 +33,28 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def update
+    if @category.update_attributes category_params
+      flash[:success] = t ".success"
+      redirect_to admin_categories_path
+    else
+      flash.now[:danger] = t ".fail"
+      render :edit
+    end
   end
 
   def destroy
+    if @category.destroy
+      flash.now[:success] = t ".delete_success"
+      respond_to do |format|
+        format.html {
+          redirect_to admin_categories_path
+        }
+        format.js
+      end
+    else
+      flash.now[:danger] = t ".delete_failed"
+      redirect_to admin_categories_path
+    end
   end
 
   private

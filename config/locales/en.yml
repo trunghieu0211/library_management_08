@@ -139,5 +139,13 @@ en:
         excel: "Excel"
         edit_delete: "Edit/Delete"
         sure: "Are you sure?"
-
+      update:
+        success: "Update category success!"
+        fail: "Update category fail"
+      destroy:
+        delete_success: "Delete category success"
+        delete_failed: "Delete category fail"
+      edit:
+        edit_category: "EDIT CATEGORY"
+        edit: "Edit"
 
