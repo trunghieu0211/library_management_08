@@ -162,4 +162,13 @@ en:
         excel: "Excel"
         edit_delete: "Edit/Delete"
         sure: "Are you sure?"
+      update:
+        success: "Update author success!"
+        fail: "Update author fail"
+      destroy:
+        delete_success: "Delete author success"
+        delete_failed: "Delete author fail"
+      edit:
+        edit_author: "EDIT AUTHOR"
+        edit: "Edit"
 

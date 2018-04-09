@@ -32,6 +32,31 @@ class Admin::AuthorsController < Admin::BaseController
   def edit
   end
 
+  def update
+    if @author.update_attributes author_params
+      flash[:success] = t ".success"
+      redirect_to admin_authors_path
+    else
+      flash.now[:danger] = t ".fail"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @author.destroy
+      flash.now[:success] = t ".delete_success"
+      respond_to do |format|
+        format.html {
+          redirect_to admin_authors_path
+        }
+        format.js
+      end
+    else
+      flash.now[:danger] = t ".delete_failed"
+      redirect_to admin_authors_path
+    end
+  end
+
   private
 
   def author_params
