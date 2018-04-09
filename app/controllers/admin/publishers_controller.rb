@@ -2,6 +2,15 @@ class Admin::PublishersController < Admin::BaseController
   before_action :load_publisher, except: %i(new index create)
 
   def index
+    @q = Publisher.ransack(params[:q])
+    @publishers = @q.result(distinct: true).publisher_order.page(params[:page]).
+      per Settings.publisher.number_publisher_page
+    @allPublisher = Publisher.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @allPublisher.to_csv}
+      format.xls {send_data @allPublisher.to_csv(col_sep: "\t")}
+    end
   end
 
   def new
