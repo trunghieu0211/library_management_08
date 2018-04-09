@@ -125,4 +125,12 @@ en:
       destroy:
         delete_success: "Delete user success"
         delete_failed: "Delete user fail"
+    categories:
+      create:
+        create_category_success: "Create category success!"
+        create_category_fail: "Create category fail"
+      new:
+        create_category: "CREATE CATEGORY"
+        create: "Create"
+
 

@@ -17,8 +17,8 @@
         </li>
         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu"><%= t ".category" %></span></a>
           <ul aria-expanded="false" class="collapse">
-            <li><a href="#"><%= t ".list" %></a></li>
-            <li><a href="#"><%= t ".create" %></a></li>
+            <li><%= link_to t(".list"), admin_categories_path %></li>
+            <li><%= link_to t(".create"), new_admin_category_path %></li>
           </ul>
         </li>
       <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu"><%= t ".book" %></span></a>

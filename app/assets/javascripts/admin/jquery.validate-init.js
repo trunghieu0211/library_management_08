@@ -31,6 +31,10 @@ var form_validation = function() {
                         required: !0,
                         equalTo: "#user_password"
                     },
+                    "category[name]":{
+                        required: !0,
+                        maxlength: 30
+                    },
                     "val-email": {
                         required: !0,
                         email: !0
@@ -91,6 +95,10 @@ var form_validation = function() {
                         minlength: "Your username must consist of at least 3 characters"
                     },
                     "user[email]":"Please enter a valid email address",
+                    "category[name]":{
+                        required: "Please enter a category name",
+                        maxlength: "Category is too long(maximum is 30 characters)"
+                    },
                     "val-email": "Please enter a valid email address",
                     "val-password": {
                         required: "Please provide a password",
