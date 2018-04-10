@@ -194,4 +194,21 @@ en:
       edit:
         edit_publisher: "EDIT PUBLISHER"
         edit: "Edit"
+    request_books:
+      index:
+        list_request: "LIST REQUEST"
+        data_export: "Date Export"
+        csv: "CSV"
+        excel: "Excel"
+        edit_delete: "Edit/Delete"
+        sure: "Are you sure?"
+      update:
+        success: "Update request success!"
+        fail: "Update request fail"
+      destroy:
+        delete_success: "Delete request success"
+        delete_failed: "Delete request fail"
+      edit:
+        edit_request: "EDIT REQUEST"
+        edit: "Edit"
 
