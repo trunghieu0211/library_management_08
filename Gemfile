@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "carrierwave", "~> 1.0"
+gem "chosen-rails"
 gem "ckeditor", github: "galetahub/ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config", "~> 1.4"

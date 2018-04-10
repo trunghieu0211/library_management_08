@@ -1,0 +1,62 @@
+<%= form_for [:admin, @book], :html => {:class => "form-valide"} do |f| %>
+  <%= error_messages @book %>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :name %> <span class="text-danger">*</span>
+    </div>
+    <div class="col-md-8">
+      <%= f.text_field :name, class: "form-control",
+        placeholder: "Enter a book name.." %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label" for="val-skill"><%= t ".author" %> <span class="text-danger">*</span> </label>
+    <div class="col-lg-8">
+      <%= f.collection_select :authorBook_ids, Author.order(:name), :id, :name, {},
+        {multiple: true} %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label" for="val-skill"><%= t ".category" %> <span class="text-danger">*</span> </label>
+    <div class="col-lg-8">
+      <%= f.collection_select :categoryBook_ids, Category.order(:name), :id, :name, {},
+        {multiple: true} %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label" for="val-skill"><%= t ".publisher" %> <span class="text-danger">*</span> </label>
+    <div class="col-lg-8">
+      <%= f.collection_select :publisher_id, Publisher.order(:name), :id, :name, {} %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label" for="val-number"><%= t ".number_page" %> </label>
+    <div class="col-lg-8">
+      <%= f.text_field :number_page, class: "form-control",
+        placeholder: "25" %>
+    </div>
+  </div>
+  <% if yield(:title) == "Edit" %>
+
+  <% end %>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :description %>
+    </div>
+    <div class="col-md-8">
+      <%= f.cktext_area :description, class: "form-control",
+        placeholder: "Enter a description.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :image %>
+    </div>
+    <div class="col-md-8">
+      <%= f.file_field :image_url %>
+    </div>
+  </div>
+  <div class="actions form-group">
+      <%= f.submit yield(:button), class: "btn btn-primary" %>
+  </div>
+<% end %>

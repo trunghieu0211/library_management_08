@@ -23,3 +23,5 @@
 //= require admin/jquery.validate.min.js
 //= require admin/jquery.validate-init.js
 //= require ckeditor/init
+//= require chosen-jquery
+//= require admin/scaffold

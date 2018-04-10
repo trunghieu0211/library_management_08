@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :authors, except: %i(show)
     resources :publishers, except: %i(show)
     resources :request_books, except: %i(show)
+    resources :books, except: %i(show)
   end
 end

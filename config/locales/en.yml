@@ -211,4 +211,27 @@ en:
       edit:
         edit_request: "EDIT REQUEST"
         edit: "Edit"
+    books:
+      create:
+        create_book_success: "Create book success!"
+        create_book_fail: "Create book fail"
+      new:
+        create_book: "CREATE BOOK"
+        create: "Create"
+      index:
+        list_book: "LIST BOOK"
+        data_export: "Date Export"
+        csv: "CSV"
+        excel: "Excel"
+        edit_delete: "Edit/Delete"
+        sure: "Are you sure?"
+      update:
+        success: "Update book success!"
+        fail: "Update book fail"
+      destroy:
+        delete_success: "Delete book success"
+        delete_failed: "Delete book fail"
+      edit:
+        edit_publisher: "EDIT BOOK"
+        edit: "Edit"
 

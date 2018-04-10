@@ -6,7 +6,9 @@ user:
   min_password_length: 6
   max_password_length: 20
 book:
+  book_length_max_size: 50
   number_book_page: 12
+  description_max_length: 1500
 category:
   category_max_size: 30
   number_category_page: 10

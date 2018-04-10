@@ -43,6 +43,13 @@ var form_validation = function() {
                         required: !0,
                         maxlength: 40
                     },
+                    "book[name]":{
+                        required: !0,
+                        maxlength: 50
+                    },
+                    "book[publisher_id]":{
+                        required: !0
+                    },
                     "val-email": {
                         required: !0,
                         email: !0
@@ -114,6 +121,13 @@ var form_validation = function() {
                     "publisher[name]":{
                         required: "Please enter a publisher name",
                         maxlength: "Publisher name is too long(maximum is 40 characters)"
+                    },
+                    "book[name]":{
+                        required: "Please enter a book name",
+                        maxlength: "Book name is too long(maximum is 50 characters)"
+                    },
+                    "book[publisher_id]":{
+                        required: "Please choose publisher"
                     },
                     "val-email": "Please enter a valid email address",
                     "val-password": {

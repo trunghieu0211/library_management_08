@@ -9,4 +9,5 @@
 *= require font-awesome
 *= require admin/custom
 *= require toastr
+*= require chosen
 */
