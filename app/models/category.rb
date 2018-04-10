@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :categoryBooks
-  has_many :category, through: :categoryBooks
+  has_many :books, through: :categoryBooks
 
   scope :category_order, ->{order created_at: :desc}
 

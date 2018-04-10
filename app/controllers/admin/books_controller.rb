@@ -3,6 +3,15 @@ class Admin::BooksController < Admin::BaseController
   before_action :load_publisher, :load_author, :load_category, only: %i(new edit)
 
   def index
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).book_order.page(params[:page]).
+      per Settings.author.number_book_page
+    @allBook = Book.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @allBook.to_csv}
+      format.xls {send_data @allBook.to_csv(col_sep: "\t")}
+    end
   end
 
   def new

@@ -1,2 +1,69 @@
-<h1>Admin::Books#index</h1>
-<p>Find me in app/views/admin/books/index.html.erb</p>
+<% provide :title, t(".list_book") %>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"><%= t ".date_export" %></h4>
+        <div class="table-responsive m-t-40">
+          <div id="example23_wrapper" class="dataTables_wrapper">
+            <div class="dt-buttons">
+              <span><%= link_to t(".csv"), admin_books_path(format: "csv"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
+              <span><%= link_to t(".excel"), admin_books_path(format: "xls"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
+              </a>
+            </div>
+          <div id="example23_filter" class="dataTables_filter">
+            <%= search_form_for @q, url: admin_books_path do |f| %>
+              <%= f.search_field :name_cont %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <%= paginate @books %>
+          <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+            <thead>
+              <tr role="row">
+                <th><%= t ".image" %></th>
+                <th><%= t ".name" %></th>
+                <th><%= t ".author" %></th>
+                <th><%= t ".category" %></th>
+                <th><%= t ".publisher" %></th>
+                <th><%= t ".edit_delete" %></th>
+            </thead>
+            <tbody>
+              <% @books.each do |book| %>
+                <tr role="row" class="odd" id="book-<%= book.id %>" >
+                  <td><%= image_tag book.image_url.thumb.to_s %></td>
+                  <td><%= book.name %></td>
+                  <td>
+                    <ul>
+                      <% book.authors.each do |author| %>
+                        <li><%= author.name %></li>
+                      <% end %>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      <% book.categories.each do |category| %>
+                        <li><%= category.name %></li>
+                      <% end %>
+                    </ul>
+                  </td>
+                  <td><%= book.publisher.name %></td>
+                  <td class="edit_destroy">
+                    <%= link_to edit_admin_book_path book do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to admin_book_path(book), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
+          <%= paginate @books %>
+        </div>
+    </div>
+  </div>
+</div>
+
