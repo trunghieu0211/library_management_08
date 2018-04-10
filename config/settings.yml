@@ -16,3 +16,5 @@ author:
 publisher:
   publisher_max_size: 40
   number_publisher_page: 10
+request:
+  number_request_page: 10

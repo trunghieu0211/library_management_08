@@ -1,0 +1,61 @@
+<% provide :title, t(".list_request") %>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"><%= t ".date_export" %></h4>
+        <div class="table-responsive m-t-40">
+          <div id="example23_wrapper" class="dataTables_wrapper">
+            <div class="dt-buttons">
+              <span><%= link_to t(".csv"), admin_request_books_path(format: "csv"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
+              <span><%= link_to t(".excel"), admin_request_books_path(format: "xls"),
+                class: "dt-button buttons-pdf buttons-html5" %></span>
+              </a>
+            </div>
+           <div id="example23_filter" class="dataTables_filter">
+            <%= search_form_for @q, url: admin_request_books_path do |f| %>
+              <%= f.label :status %>
+              <%= f.select :status_cont,
+                options_for_select({"accept" => "1", "reject" => "2", "pending" => "0"}), {include_blank: ""} %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <%= paginate @requests %>
+          <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+            <thead>
+              <tr role="row">
+                <th><%= t ".user" %></th>
+                <th><%= t ".book" %></th>
+                <th><%= t ".status" %></th>
+                <th><%= t ".date_begin" %></th>
+                <th><%= t ".date_end" %></th>
+                <th><%= t ".date_return" %></th>
+                <th><%= t ".edit_delete" %></th>
+            </thead>
+            <tbody>
+              <% @requests.each do |request| %>
+                <tr role="row" class="odd" id="request-<%= request.id %>" >
+                  <td><%= request.user.name %></td>
+                  <td><%= request.book.name %></td>
+                  <td><%= request.status %></td>
+                  <td><%= request.date_begin %></td>
+                  <td><%= request.date_end %></td>
+                  <td><%= request.date_return %></td>
+                  <td class="edit_destroy">
+                    <%= link_to edit_admin_request_book_path request do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to admin_request_book_path(request), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
+          <%= paginate @requests %>
+        </div>
+    </div>
+  </div>
+</div>
+

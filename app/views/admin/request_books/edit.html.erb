@@ -1,0 +1,65 @@
+<% provide :title, t(".edit_request") %>
+<% provide :button, t(".edit") %>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-validation">
+            <%= form_for [:admin, @request], :html => {:class => "form-valide"} do |f| %>
+              <div class="field form-group row">
+                <div class="col-lg-3 col-form-label">
+                  <%= f.label :user %>
+                </div>
+                <div class="col-md-8">
+                <%= f.text_field :user_id, class: "form-control", :value => @request.user.name, :disabled => true %>
+                </div>
+              </div>
+              <div class="field form-group row">
+                <div class="col-lg-3 col-form-label">
+                  <%= f.label :book %>
+                </div>
+                <div class="col-md-8">
+                <%= f.text_field :book_id, class: "form-control", :value => @request.book.name, :disabled => true%>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label" for="val-skill"><%= t ".status" %> </label>
+                <div class="col-lg-8">
+                  <%= f.select(:status, options_for_select(["pending", "accept", "reject"], :selected => @request.status),{}, {:class => "form-control"}) %>
+                </div>
+              </div>
+              <div class="field form-group row">
+                <div class="col-lg-3 col-form-label">
+                  <%= f.label :date_begin %>
+                </div>
+                <div class="col-md-8">
+                <%= f.text_field :date_begin, class: "form-control", :value => @request.date_begin, :disabled => true %>
+                </div>
+              </div>
+              <div class="field form-group row">
+                <div class="col-lg-3 col-form-label">
+                  <%= f.label :date_end %>
+                </div>
+                <div class="col-md-8">
+                <%= f.text_field :date_end, class: "form-control", :value => @request.date_end, :disabled => true %>
+                </div>
+              </div>
+              <div class="field form-group row">
+                <div class="col-lg-3 col-form-label">
+                  <%= f.label :date_return %>
+                </div>
+                <div class="col-md-8">
+                <%= f.text_field :date_return, class: "form-control", :value => @request.date_return, :disabled => true %>
+                </div>
+              </div>
+              <div class="actions form-group">
+                  <%= f.submit yield(:button), class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

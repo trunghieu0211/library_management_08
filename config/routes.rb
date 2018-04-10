@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
     root "static_pages#home"
-    resources :users
-    resources :categories
-    resources :authors
-    resources :publishers
+    resources :users, except: %i(show)
+    resources :categories, except: %i(show)
+    resources :authors, except: %i(show)
+    resources :publishers, except: %i(show)
+    resources :request_books, except: %i(show)
   end
 end
