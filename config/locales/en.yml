@@ -156,7 +156,7 @@ en:
         create_author: "CREATE AUTHOR"
         create: "Create"
       index:
-        list_author: "LIST USER"
+        list_author: "LIST AUTHOR"
         data_export: "Date Export"
         csv: "CSV"
         excel: "Excel"

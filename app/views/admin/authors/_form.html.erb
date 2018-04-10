@@ -5,8 +5,25 @@
       <%= f.label :name %>
     </div>
     <div class="col-md-8">
-    <%= f.text_field :name, class: "form-control",
-      placeholder: "Enter a author name.." %>
+      <%= f.text_field :name, class: "form-control",
+        placeholder: "Enter a author name.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :description %>
+    </div>
+    <div class="col-md-8">
+      <%= f.cktext_area :description, class: "form-control",
+        placeholder: "Enter a description.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :avatar %>
+    </div>
+    <div class="col-md-8">
+      <%= f.file_field :avatar %>
     </div>
   </div>
   <div class="actions form-group">

@@ -60,7 +60,7 @@ class Admin::AuthorsController < Admin::BaseController
   private
 
   def author_params
-    params.require(:author).permit :name
+    params.require(:author).permit :avatar, :name, :description
   end
 
   def load_author

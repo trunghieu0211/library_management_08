@@ -14,8 +14,7 @@
             </div>
           <div id="example23_filter" class="dataTables_filter">
             <%= search_form_for @q, url: admin_authors_path do |f| %>
-              <%= f.label :name %>
-              <%= f.search_field :name_cont %>
+              <%= f.search_field :name_or_description_cont %>
               <%= f.submit %>
             <% end %>
           </div>
@@ -23,13 +22,17 @@
           <table class="display nowrap table table-hover table-striped table-bordered dataTable">
             <thead>
               <tr role="row">
+                <th><%= t ".avatar" %></th>
                 <th><%= t ".name" %></th>
+                <th><%= t ".description" %></th>
                 <th><%= t ".edit_delete" %></th>
             </thead>
             <tbody>
               <% @authors.each do |author| %>
                 <tr role="row" class="odd" id="author-<%= author.id %>" >
+                  <td><%= image_tag author.avatar.thumb.to_s %></td>
                   <td><%= author.name %></td>
+                  <td><%= raw author.description %></td>
                   <td class="edit_destroy">
                     <%= link_to edit_admin_author_path author do %>
                       <i class="fa fa-pencil" aria-hidden="true"></i>

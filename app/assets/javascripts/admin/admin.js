@@ -22,3 +22,4 @@
 //= require admin_ela/sticky-kit.min.js
 //= require admin/jquery.validate.min.js
 //= require admin/jquery.validate-init.js
+//= require ckeditor/init
