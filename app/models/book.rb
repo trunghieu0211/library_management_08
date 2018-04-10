@@ -16,8 +16,6 @@ class Book < ApplicationRecord
   validates :name, presence: true, length:{maximum: Settings.book.book_length_max_size}
   validates :publisher, presence: true
   validates :description, presence: true, length:{maximum: Settings.book.description_max_length}
-  validates :author, presence: true
-  validates :category, presence: true
 
   def self.to_csv options = {}
     CSV.generate(options) do |csv|

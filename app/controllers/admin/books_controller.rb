@@ -5,7 +5,7 @@ class Admin::BooksController < Admin::BaseController
   def index
     @q = Book.ransack(params[:q])
     @books = @q.result(distinct: true).book_order.page(params[:page]).
-      per Settings.author.number_book_page
+      per Settings.book.number_book_page
     @allBook = Book.all
     respond_to do |format|
       format.html
@@ -22,12 +22,15 @@ class Admin::BooksController < Admin::BaseController
 
   def create
     @book = Book.new book_params
+
     params[:book][:authorBook_ids].each do |author|
       @book.authorBooks.build(:author_id => author) unless author.empty?
     end
+
     params[:book][:categoryBook_ids].each do |category|
       @book.categoryBooks.build(:category_id => category) unless category.empty?
     end
+
     if @book.save
       flash[:success] = t ".create_book_success"
       redirect_to admin_books_path
@@ -44,7 +47,7 @@ class Admin::BooksController < Admin::BaseController
 
   def book_params
     params.require(:book).permit :publisher_id, :name, :status, :description,
-      :image_url, :number_page, :authorBook_ids
+      :image_url, :number_page
   end
 
   def load_book
@@ -56,10 +59,12 @@ class Admin::BooksController < Admin::BaseController
   def load_publisher
     @publishers = Publisher.all
   end
-   def load_category
+
+  def load_category
     @categories = Category.all
   end
-   def load_author
+
+  def load_author
     @authors = Author.all
   end
 end
