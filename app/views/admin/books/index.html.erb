@@ -1,4 +1,4 @@
-<% provide :title, t(".list_book") %>
+  <% provide :title, t(".list_book") %>
 <div class="col-12">
   <div class="card">
     <div class="card-body">
@@ -54,11 +54,15 @@
                   <td><%= book.number_page %></td>
                   <td><%= book.status %></td>
                   <td class="edit_destroy">
-                    <%= link_to edit_admin_book_path book do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% if can? :update, book %>
+                      <%= link_to edit_admin_book_path book do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
-                    <%= link_to admin_book_path(book), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% if can? :destroy, book %>
+                      <%= link_to admin_book_path(book), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>

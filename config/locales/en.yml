@@ -61,6 +61,7 @@ en:
   admin:
     base:
       verify_admin:
+        authorized_create_user: "You are not authorized to create user"
         permission: "you don't have permission to access to this page"
         login_admin_success: "Hi Admin, welcome to back"
     layouts:
@@ -104,6 +105,7 @@ en:
       new:
         create_user: "CREATE USER"
         create: "Create"
+        authorized_create_user: "You are not authorized to create user"
       index:
         list_user: "LIST USER"
         data_export: "Date Export"
@@ -133,7 +135,7 @@ en:
         create_category: "CREATE CATEGORY"
         create: "Create"
       index:
-        list_category: "LIST USER"
+        list_category: "LIST CATEGORY"
         data_export: "Date Export"
         csv: "CSV"
         excel: "Excel"

@@ -12,7 +12,7 @@
         <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t ".admin" %></a>
+          <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
           <div class="dropdown-menu dropdown-menu-right animated zoomIn">
             <ul class="dropdown-user">
               <li><a href="#"><%= t ".profile" %></a></li>

@@ -3,6 +3,10 @@ class Admin::BaseController < ActionController::Base
 
   before_action :verify_admin
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to admin_users_path , :alert => t(".authorized_create_user")
+  end
+
   private
 
   def verify_admin

@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_action :load_user, except: %i(new index create)
+  load_and_authorize_resource
 
   def index
     @q = User.ransack(params[:q])
