@@ -1,8 +1,8 @@
-  <div class="wrapper push-wrapper">
-    <div class="parallax-window inner-banner tc-padding overlay-dark" data-parallax="scroll" data-image-src=<%= asset_path "banner.jpg"  %>>
-    <div class="container">
-      <div class="inner-page-heading h-white">
-        <h2><%= t ".welcome" %></h2>
-      </div>
+<div class="wrapper push-wrapper">
+  <div class="background-banner">
+    <%= image_tag image_url("banner.jpg") %>
+    <div class="inner-page-heading h-white welcome">
+      <h2><%= t ".welcome" %></h2>
     </div>
   </div>
+</div>

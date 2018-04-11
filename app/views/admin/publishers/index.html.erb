@@ -31,11 +31,15 @@
                 <tr role="row" class="odd" id="publisher-<%= publisher.id %>" >
                   <td><%= publisher.name %></td>
                   <td class="edit_destroy">
-                    <%= link_to edit_admin_publisher_path publisher do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% if can? :update, publisher %>
+                      <%= link_to edit_admin_publisher_path publisher do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
-                    <%= link_to admin_publisher_path(publisher), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% if can? :destroy, publisher %>
+                      <%= link_to admin_publisher_path(publisher), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>

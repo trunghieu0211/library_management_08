@@ -3,25 +3,85 @@
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
 
 .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
+.background-banner {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+.background-banner img{
+    width: 100%;
+}
+.background-banner .welcome {
+    position: absolute;
+    top: 50%;
+    left: 33%;
+}
+.inner-page-heading h2 {
+    font-size: 50px;
+}
+.product-img {
+    padding: 0 0 30px 0;
+}
+.product-img img {
+    width: 180px;
+    height: 250px;
+}
+.category {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+.category div {
+    float: left;
+}
+.category-name {
+    border-radius: 10px;
+    padding: 0 6px;
+    margin: 2px 0;
+    background-color: blue;
+    color: #ffffff;
+}
+.layout-1-2 {
+    height: 30px;
+}
+.layout-2 {
+    height: 80px;
+}
+.product-img .sale-bacth {
+    width: 70px;
+    bottom: 10px;
+}
+.rating-nd-price strong {
+    font-size: 14px;
+}
+.product-box::before{
+    border-left: 2px solid #1e293d;
+    border-top: 2px solid #1e293d;
+}
+
+.product-box::after{
+    border-right: 2px solid #1e293d;
+    border-bottom: 2px solid #1e293d;
+}

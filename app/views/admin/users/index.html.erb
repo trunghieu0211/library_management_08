@@ -42,12 +42,17 @@
                   <td><%= user.email %></td>
                   <td><%= user.permision %></td>
                   <td class="edit_destroy">
-                    <%= link_to edit_admin_user_path user do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% if can? :update, user %>
+                      <%= link_to edit_admin_user_path user do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
-                    <%= link_to admin_user_path(user), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% if can? :destroy, user %>
+                      <%= link_to admin_user_path(user), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
+                    </td>
                   </td>
                 </tr>
               <% end %>
