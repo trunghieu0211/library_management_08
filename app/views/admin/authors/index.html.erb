@@ -34,11 +34,15 @@
                   <td><%= author.name %></td>
                   <td><%= raw author.description %></td>
                   <td class="edit_destroy">
-                    <%= link_to edit_admin_author_path author do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% if can? :update, author %>
+                      <%= link_to edit_admin_author_path author do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
-                    <%= link_to admin_author_path(author), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% if can? :destroy, author %>
+                      <%= link_to admin_author_path(author), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>

@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "cancancan", "~> 2.0"
 gem "carrierwave", "~> 1.0"
 gem "chosen-rails"
 gem "ckeditor", github: "galetahub/ckeditor"

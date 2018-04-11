@@ -42,11 +42,15 @@
                   <td><%= request.date_end %></td>
                   <td><%= request.date_return %></td>
                   <td class="edit_destroy">
-                    <%= link_to edit_admin_request_book_path request do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% if can? :update, request %>
+                      <%= link_to edit_admin_request_book_path request do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
-                    <%= link_to admin_request_book_path(request), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <% if can? :destroy, request %>
+                      <%= link_to admin_request_book_path(request), method: :delete, remote: true, data:{confirm: t(".sure")} do %>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>
