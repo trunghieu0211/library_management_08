@@ -232,6 +232,6 @@ en:
         delete_success: "Delete book success"
         delete_failed: "Delete book fail"
       edit:
-        edit_publisher: "EDIT BOOK"
+        edit_book: "EDIT BOOK"
         edit: "Edit"
 
