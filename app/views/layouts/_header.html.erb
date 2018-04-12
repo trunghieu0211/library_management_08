@@ -27,6 +27,16 @@
             <i class="fa fa-home"></i><%= t ".home" %>
           <% end %>
         </li>
+        <li class="">
+          <%= link_to books_path do %>
+            <i class="fa fa-book"></i><%= t ".books" %>
+          <% end %>
+        </li>
+        <li class="">
+          <%= link_to authors_path do %>
+            <i class="fa fa-user"></i><%= t ".authors" %>
+          <% end %>
+        </li>
          <li class="dropdown-icon">
       <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
       <ul>

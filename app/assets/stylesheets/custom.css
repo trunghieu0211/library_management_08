@@ -99,3 +99,11 @@
 .author-list-detail h2 {
     font-family: 'Lato', sans-serif;
 }
+.recommended-book-img img {
+    width: 158px;
+    height: 218px;
+}
+.arthor-img img {
+    width: 207px;
+    height: 197px;
+}

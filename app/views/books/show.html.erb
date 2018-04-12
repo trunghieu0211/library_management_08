@@ -14,7 +14,11 @@
             <div class="product-thumnbnail">
               <ul class="product-slider">
                   <li>
-                    <%= image_tag @book.image_url %>
+                    <% if @book.image_url.present? %>
+                        <%= image_tag @book.image_url %>
+                      <% elsif %>
+                        <%= image_tag "gray.png" %>
+                      <% end %>
                   </li>
               </ul>
             </div>

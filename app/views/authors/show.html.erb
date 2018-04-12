@@ -1,2 +1,75 @@
-<h1>Authors#show</h1>
-<p>Find me in app/views/authors/show.html.erb</p>
+<%= render "layouts/banner" %>
+<div class="single-aurthor-detail tc-padding">
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-4 col-md-5">
+        <div class="arthor-detail-column">
+          <div class="arthor-img">
+            <% if @author.avatar.present? %>
+              <%= image_tag @author.avatar %>
+            <% elsif %>
+              <%= image_tag "gray.png" %>
+            <% end %>
+          </div>
+          <div class="arthor-detail">
+            <h2><%= @author.name %></h2>
+          </div>
+          <div class="social-activity">
+            <ul class="comments-status">
+              <li><i class=""></i></li>
+              <li><i class="fa fa-user-o"></i><%= t ".userfollow" %> 1,089</li>
+              <li><i class=""></i></li>
+            </ul>
+            <a href="#" class="btn-1 sm shadow-0"><%= t ".follow_me" %></a>
+          </div>
+        </div>
+      </aside>
+      <div class="col-lg-8 col-md-7">
+        <div class="single-arthor-detail">
+          <div class="single-arthor-widget">
+            <h5><%= t ".overview" %></h5>
+            <div class="author-overview">
+              <p><%= @author.description %></p>
+            </div>
+          </div>
+          <div class="single-arthor-widget">
+            <h5><%= t ".recomment" %> <%= @author.name %> </h5>
+            <div class="filter-tags-holder">
+              <ul id="filterbale-nav" class="option-set">
+                <li><a class="selected" data-filter="*" href="#"><%= t ".allbook" %></a></li>
+              </ul>
+            </div>
+              <div id="filter-masonry" class="gallery-masonry">
+              <% @author.books.each do |book| %>
+                <%= link_to book_path book do %>
+                <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-recent">
+                  <div class="recommended-book">
+                    <div class="recommended-book-img">
+                      <% if book.image_url.present? %>
+                        <%= image_tag book.image_url %>
+                      <% elsif %>
+                        <%= image_tag "gray.png" %>
+                      <% end %>
+                    </div>
+                      <div class="recommended-book-detail">
+                        <h6><%= book.name %></h6>
+                        <span><%= @author.name %></span>
+                        <ul class="rating-stars">
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star-half-o"></i></li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

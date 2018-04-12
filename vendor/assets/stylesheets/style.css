@@ -923,7 +923,7 @@ background: #1e293d; font-size: 12px; padding: 0 10px 0 40px; color: #fff;}
 .arthor-progress .progress[value], base::-moz-progress-bar{ border-radius: 10px; background: #f7f7f7; height: 10px;}
 
 .comments-status{ background: #f7f7f7; padding: 15px 0; overflow: hidden; margin: 0 0 30px;}
-.comments-status li{ float: left; width: 33%; font-weight: bold; text-align: center; border-right: 1px solid rgba(0,0,0,0.1); border-left: 1px solid #fff;}
+.comments-status li{ float: left; width: 33%; font-weight: bold; text-align: center; border-left: 1px solid #fff;}
 .comments-status li:last-child{ border: 0; border-left: 1px solid #fff;}
 .comments-status li i{ display: block; margin: 0 0 5px;}
 

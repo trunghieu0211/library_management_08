@@ -71,6 +71,12 @@ en:
   authors:
     index:
       read_more: "Read more"
+    show:
+      follow_me: "Follow me"
+      overview: "Author Overview"
+      recommend: "Recommended"
+      allbook: "All Books"
+      userfollow: "Follower"
   admin:
     base:
       verify_admin:
