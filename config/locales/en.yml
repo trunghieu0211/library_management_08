@@ -81,6 +81,14 @@ en:
     index:
       email: "Email: "
       phone: "Phone: "
+    show:
+      edit_profile: "Edit Profile"
+      follow_me: "Follow me"
+      overview: "Author Overview"
+      recommend: "Recommended"
+      allbook: "All Books"
+      userfollow: "Follower"
+      email: "Email: "
   admin:
     base:
       verify_admin:
