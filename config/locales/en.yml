@@ -68,6 +68,9 @@ en:
       number_of_page: "Number of pages: "
       description: "Description: "
       want_to_read: "Want to read"
+  authors:
+    index:
+      read_more: "Read more"
   admin:
     base:
       verify_admin:
