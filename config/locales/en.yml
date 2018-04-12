@@ -58,6 +58,16 @@ en:
       quick_view: "Quick view"
       top_categories: "Top Books Catagories"
       view_all: "View all"
+  books:
+    show:
+      status: "Status :"
+      customer_review: "customer review"
+      author: "Author: "
+      category: "Category: "
+      publisher: "Publisher: "
+      number_of_page: "Number of pages: "
+      description: "Description: "
+      want_to_read: "Want to read"
   admin:
     base:
       verify_admin:
