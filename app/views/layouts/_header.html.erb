@@ -43,7 +43,7 @@
           <% end %>
         </li>
          <li class="dropdown-icon">
-      <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
+      <a href=""><i class="fa fa-file-text"></i><%= current_user.name %></a>
       <ul>
         <li>
           <%= link_to user_path current_user do %>

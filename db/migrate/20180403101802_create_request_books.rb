@@ -10,5 +10,7 @@ class CreateRequestBooks < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_index(:request_books, [:user_id, :book_id], unique: true)
   end
 end

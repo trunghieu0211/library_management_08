@@ -1,0 +1,6 @@
+<%= form_for [@book, @book.requestBooks.find_by(book_id: @book.id)], :method => :delete, :remote => true do |f| %>
+  <li >
+    <%= f.hidden_field :book_id, :value=>@book.id %>
+    <%= f.submit t(".un_want_to_read"), :class => "btn-1 sm shadow-0" %>
+  </li>
+<% end %>

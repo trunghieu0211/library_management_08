@@ -57,10 +57,23 @@
                 </div>
                 <h4><%= t ".description" %></h4>
                 <p><%= raw @book.description %></p>
-                <ul class="btn-list">
-                  <li><a class="btn-1 sm shadow-0 " href="#"><%= t ".want_to_read" %></a></li>
-                  <li><a class="btn-1 sm shadow-0 blank" href="#"><i class="fa fa-heart"></i></a></li>
-                </ul>
+                <% if user_signed_in? %>
+                  <ul class="btn-list">
+                    <% request = current_user.requestBooks.find_by book_id: @book.id %>
+                    <div id="want">
+                      <% if request.status == "accept" && request.present? %>
+                        <li><a class="btn-1 sm shadow-0 " href=""><%= t ".10days" %>
+                        <%= request.date_begin.strftime("%Y/%m/%d") %> <%= t ".to" %>
+                        <%= request.date_end.strftime("%Y/%m/%d") %></a></li>
+                      <% elsif request.present? %>
+                        <%= render "request_books/destroy" %>
+                      <% else %>
+                        <%= render "request_books/create" %>
+                      <% end %>
+                    </div>
+                    <li><a class="btn-1 sm shadow-0 blank" href="#"><i class="fa fa-heart"></i></a></li>
+                  </ul>
+                <% end %>
             </div>
           </div>
         </div>

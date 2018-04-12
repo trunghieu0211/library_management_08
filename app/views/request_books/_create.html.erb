@@ -1,0 +1,8 @@
+<%= form_for [@book, @book.requestBooks.build], :remote => true do |f| %>
+  <li >
+    <%= f.hidden_field :user_id, :value=>current_user.id %>
+    <%= f.hidden_field :book_id, :value=>@book.id %>
+    <%= f.submit t(".want_to_read"), :class => "btn-1 sm shadow-0" %>
+  </li>
+<% end %>
+

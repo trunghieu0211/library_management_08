@@ -1,5 +1,3 @@
-//= require jquery3
-//= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
 //= require toastr
@@ -28,5 +26,4 @@
 //= require colorswitcher
 //= require custom.js
 //= require cookie
-//= require jquery.validate-init.js
 

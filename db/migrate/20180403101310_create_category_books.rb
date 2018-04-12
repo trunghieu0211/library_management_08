@@ -7,6 +7,6 @@ class CreateCategoryBooks < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index: :category_books, [:book, :category], unique: true
+    add_index :category_books, [:book, :category], unique: true
   end
 end

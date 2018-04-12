@@ -17,6 +17,8 @@ class Admin::RequestBooksController < Admin::BaseController
   end
 
   def update
+    @request.date_begin = Time.now
+    @request.date_end = @request.date_begin + 10.days
     if @request.update_attributes request_params
       flash[:success] = t ".success"
       redirect_to admin_request_books_path

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180410040005) do
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id", "book_id"], name: "index_author_books_on_author_id_and_book_id", unique: true
     t.index ["author_id"], name: "index_author_books_on_author_id"
     t.index ["book_id"], name: "index_author_books_on_book_id"
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180410040005) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_category_books_on_book_id"
     t.index ["category_id"], name: "index_category_books_on_category_id"
+    t.index [nil, nil], name: "index_category_books_on_book_and_category", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -100,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180410040005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_request_books_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_request_books_on_user_id_and_book_id", unique: true
     t.index ["user_id"], name: "index_request_books_on_user_id"
   end
 

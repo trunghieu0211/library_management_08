@@ -8,8 +8,6 @@ class RequestBook < ApplicationRecord
 
   validates :user, :book, presence: true
   validates :status, presence: true
-  validates :date_begin, presence: true
-  validates :date_end, presence: true
 
   def self.to_csv options = {}
     CSV.generate(options) do |csv|

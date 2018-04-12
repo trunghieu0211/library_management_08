@@ -67,7 +67,8 @@ en:
       publisher: "Publisher: "
       number_of_page: "Number of pages: "
       description: "Description: "
-      want_to_read: "Want to read"
+      10days: "You have 10 days from "
+      to: " to "
   authors:
     index:
       read_more: "Read more"
@@ -96,6 +97,11 @@ en:
     update:
       success: "Update user success!"
       password_success: "Update password success!"
+  request_books:
+    create:
+      want_to_read: "Want to read"
+    destroy:
+      un_want_to_read: "Cancel waiting this book"
   admin:
     base:
       verify_admin:

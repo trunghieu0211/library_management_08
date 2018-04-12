@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "static_pages#home"
-  resources :books, only: %i(index show)
+  resources :books, only: %i(index show) do
+    resources :request_books
+  end
   resources :authors, only: %i(index show)
   devise_for :users
   resources :users
