@@ -872,7 +872,7 @@ border-top: 1px solid #f3f3f3; border-bottom: 1px solid #f3f3f3; position: relat
 .authors-filter ul li a.selected{ background: #f6f6f6;}
 .authors-filter ul li a.selected::before{ content: ""; position: absolute; width: 100%; height: 100%; bottom: -1px; border-bottom: 1px solid; left: 0;}
 
-.author-list li{ padding: 0 0 50px; margin: 0 0 50px; border-bottom: 1px solid #f3f3f3;}
+.author-list li{ margin: 0 0 50px; border-bottom: 1px solid #f3f3f3;}
 .author-list li:last-child{ margin: 0; padding: 0; border: 0;}
 .author-list-widget{ position: relative; padding: 0 0 0 210px;}
 .author-list-widget:hover .overlay{ visibility: visible; opacity: 1;}
