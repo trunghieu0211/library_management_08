@@ -1,0 +1,58 @@
+<h2><%= t ".update_profile" %></h2>
+<%= form_for @user, :html => {:class => "form-valide"} do |f| %>
+  <%= error_messages @user %>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :name %>
+    </div>
+    <div class="col-md-8">
+    <%= f.text_field :name, class: "form-control",
+      placeholder: "Enter a username.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :phone %>
+    </div>
+    <div class="col-md-8">
+    <%= f.text_field :phone, class: "form-control",
+      placeholder: "Enter phone.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :avatar %>
+    </div>
+    <div class="col-md-8">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+  <div class="actions form-group">
+      <%= f.submit t(".edit"), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<h2><%= t ".update_password" %></h2>
+<%= form_for [:admin, @user], :html => {:class => "form-valide-2"} do |f| %>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :password %>
+    </div>
+    <div class="col-md-8">
+    <%= f.password_field :password, class: "form-control",
+      placeholder: "Enter a password.." %>
+    </div>
+  </div>
+  <div class="field form-group row">
+    <div class="col-lg-3 col-form-label">
+      <%= f.label :password_confirmation %>
+    </div>
+    <div class="col-md-8">
+      <%= f.password_field :password_confirmation, autocomplete: "off",
+        class: "form-control", placeholder: "Enter password confirmation" %>
+    </div>
+  </div>
+  <div class="actions form-group">
+      <%= f.submit t(".update_password"), class: "btn btn-primary" %>
+  </div>
+<% end %>

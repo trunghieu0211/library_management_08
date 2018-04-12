@@ -6,11 +6,15 @@
         <div class="arthor-detail-column">
           <div class="arthor-img">
             <% if @user.avatar.present? %>
-              <%= image_tag @user.avatar %>
+              <%= image_tag @user.avatar.to_s %>
             <% elsif %>
               <%= image_tag "gray.png" %>
             <% end %>
-            <a class="edit-tag" href="#"><i class="fa fa-pencil-square-o"></i><%= t ".edit_profile" %></a>
+            <% if can? :update, @user %>
+              <%= link_to edit_user_path(@user), :class => "edit-tag" do %>
+                <i class="fa fa-pencil-square-o"></i><%= t ".edit_profile" %>
+              <% end %>
+            <% end %>
           </div>
           <div class="arthor-detail">
             <h2><%= @user.name %></h2>

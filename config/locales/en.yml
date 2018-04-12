@@ -81,6 +81,7 @@ en:
     index:
       email: "Email: "
       phone: "Phone: "
+      read_more: "Read more"
     show:
       edit_profile: "Edit Profile"
       follow_me: "Follow me"
@@ -89,6 +90,12 @@ en:
       allbook: "All Books"
       userfollow: "Follower"
       email: "Email: "
+    form:
+      edit: "Edit"
+      update_password: "Update password"
+    update:
+      success: "Update user success!"
+      password_success: "Update password success!"
   admin:
     base:
       verify_admin:

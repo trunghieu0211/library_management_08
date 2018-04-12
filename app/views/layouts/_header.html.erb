@@ -37,10 +37,19 @@
             <i class="fa fa-user"></i><%= t ".authors" %>
           <% end %>
         </li>
+        <li class="">
+          <%= link_to users_path do %>
+            <i class="fa fa-user"></i><%= t ".users" %>
+          <% end %>
+        </li>
          <li class="dropdown-icon">
       <a href=""><i class="fa fa-file-text"></i><%= t ".user" %></a>
       <ul>
-        <li><a href="author.html"><%= t ".settings" %></a></li>
+        <li>
+          <%= link_to user_path current_user do %>
+            <%= t ".settings" %>
+          <% end %>
+        </li>
         <% unless current_user.permision == "user" %>
           <li><%= link_to t(".admin"), admin_root_path %></li>
         <% end %>

@@ -9,7 +9,9 @@ class Ability
     elsif user.permision == "manager"
       can [:read, :update], :all
       cannot [:update, :create, :destroy], User
+      can [:read, :update], User,  id: user.id
     else
+      can [:read, :update], User,  id: user.id
       comment_permission user
     end
   end

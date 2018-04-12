@@ -28,4 +28,5 @@
 //= require colorswitcher
 //= require custom.js
 //= require cookie
+//= require jquery.validate-init.js
 
