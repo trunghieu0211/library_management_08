@@ -77,6 +77,10 @@ en:
       recommend: "Recommended"
       allbook: "All Books"
       userfollow: "Follower"
+  users:
+    index:
+      email: "Email: "
+      phone: "Phone: "
   admin:
     base:
       verify_admin:

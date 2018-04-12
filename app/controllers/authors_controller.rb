@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   before_action :load_author, except: %i(new index create)
 
   def index
-     @authors = Author.all.author_order.page(params[:page]).per 8
+    @authors = Author.all.author_order.page(params[:page]).per 8
   end
 
   def show

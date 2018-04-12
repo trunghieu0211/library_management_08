@@ -1,0 +1,35 @@
+<%= render "layouts/banner" %>
+<div class="author-listing tc-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-8 col-xs-12">
+        <ul class="author-list">
+          <% @users.each do |user| %>
+            <li>
+              <div class="author-list-widget">
+                <div class="arthor-list-img">
+                  <% if user.avatar.present? %>
+                    <%= image_tag user.avatar.to_s %>
+                  <% elsif %>
+                    <%= image_tag "gray.png" %>
+                  <% end %>
+                  <div class="overlay">
+                    <%= link_to "+", user_path(user), :class=>"position-center-center" %>
+                  </div>
+                </div>
+                <div class="author-list-detail">
+                  <h2><%= user.name %></h2>
+                  <p><%= t ".email" %><%= user.email %></p>
+                  <%= link_to user_path(user), :class => "btn-1 sm" do %>
+                    <%= t ".read_more" %><i class="fa fa-arrow-circle-right"></i>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
