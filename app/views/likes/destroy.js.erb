@@ -1,0 +1,2 @@
+$('#like').html('<%= escape_javascript(render("likes/create")) %>');
+$('#number_like').html('<%= @book.likes.count %>');

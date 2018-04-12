@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
   resources :books, only: %i(index show) do
     resources :request_books
+    resources :likes
   end
   resources :authors, only: %i(index show)
   devise_for :users

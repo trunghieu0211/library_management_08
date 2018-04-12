@@ -59,19 +59,27 @@
                 <p><%= raw @book.description %></p>
                 <% if user_signed_in? %>
                   <ul class="btn-list">
-                    <% request = current_user.requestBooks.find_by book_id: @book.id %>
-                    <div id="want">
-                      <% if request.status == "accept" && request.present? %>
-                        <li><a class="btn-1 sm shadow-0 " href=""><%= t ".10days" %>
-                        <%= request.date_begin.strftime("%Y/%m/%d") %> <%= t ".to" %>
-                        <%= request.date_end.strftime("%Y/%m/%d") %></a></li>
-                      <% elsif request.present? %>
-                        <%= render "request_books/destroy" %>
-                      <% else %>
-                        <%= render "request_books/create" %>
+                      <% request = current_user.requestBooks.find_by book_id: @book.id %>
+                      <div id="want">
+                        <% if request.present?  && request.status == "accept" %>
+                          <li><a class="btn-1 sm shadow-0 "><%= t ".10days" %>
+                          <%= request.date_begin.strftime("%Y/%m/%d") %> <%= t ".to" %>
+                          <%= request.date_end.strftime("%Y/%m/%d") %></a></li>
+                        <% elsif request.present? %>
+                          <%= render "request_books/destroy" %>
+                        <% else %>
+                          <%= render "request_books/create" %>
+                        <% end %>
+                      </div>
+                      <% like = current_user.likes.find_by book_id: @book.id %>
+                    <div id="like">
+                      <% if like.present? %>
+                        <%= render "likes/destroy" %>
+                      <% elsif %>
+                        <%= render "likes/create" %>
                       <% end %>
-                    </div>
-                    <li><a class="btn-1 sm shadow-0 blank" href="#"><i class="fa fa-heart"></i></a></li>
+                      </div>
+                    <li><a class="btn-1 sm shadow-0 blank" href="#"><div id="number_like"><%= @book.likes.count %></div></a></li>
                   </ul>
                 <% end %>
             </div>

@@ -102,6 +102,11 @@ en:
       want_to_read: "Want to read"
     destroy:
       un_want_to_read: "Cancel waiting this book"
+  likes:
+    create:
+      like: "Like"
+    destroy:
+      unlike: "Unlike"
   admin:
     base:
       verify_admin:

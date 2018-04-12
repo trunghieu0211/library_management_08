@@ -1,0 +1,7 @@
+<li>
+  <%= form_for [@book, @book.likes.build], :remote => true, :class=>"like_form" do |f| %>
+    <%= f.hidden_field :user_id, :value=>current_user.id %>
+    <%= f.hidden_field :book_id, :value=>@book.id %>
+    <%= f.submit t(".like"), :class => "btn-1 sm shadow-0" %>
+  <% end %>
+</li>
