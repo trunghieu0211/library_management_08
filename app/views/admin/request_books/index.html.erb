@@ -14,6 +14,8 @@
             </div>
            <div id="example23_filter" class="dataTables_filter">
             <%= search_form_for @q, url: admin_request_books_path do |f| %>
+              <%= "User or book: " %>
+              <%= f.search_field :user_name_or_book_name_cont %>
               <%= f.label :status %>
               <%= f.select :status_cont,
                 options_for_select({"accept" => "1", "reject" => "2", "pending" => "0"}), {include_blank: ""} %>

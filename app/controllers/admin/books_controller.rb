@@ -4,7 +4,7 @@ class Admin::BooksController < Admin::BaseController
 
   def index
     @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true).book_order.page(params[:page]).
+    @books = @q.result(distinct: true).includes(:authors, :categories, :publisher).book_order.page(params[:page]).
       per Settings.book.number_book_page
     @allBook = Book.all
     respond_to do |format|

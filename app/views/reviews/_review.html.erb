@@ -1,0 +1,43 @@
+<% if review.user.present? %>
+  <div id="review_<%= review.id %>">
+    <li>
+      <div class="comment">
+       <div class="avatar_comment">
+        <% if review.user.avatar.present? %>
+          <%= image_tag review.user.avatar %>
+        <% elsif %>
+          <%= image_tag "gray.png" %>
+        <% end %>
+      </div>
+      <div id="edit_<%= review.id %>">
+        <div class="reviews-detail">
+          <h6><%= review.user.email.split("@").first %> <span><%= review.created_at %></span></h6>
+          <div class="average-review-rating" data-score=<%= review.rating %>></div>
+          </div>
+        <p><%= review.content %></p>
+      </div>
+      </div>
+      <div class="links">
+        <% if user_signed_in? %>
+          <% if can? :update, review %>
+            <%= link_to t(".edit"), edit_book_review_path(review.book, review), remote: true %>
+          <% end %>
+          <% if can? :destroy, review %>
+            <%= link_to t(".delete"), book_review_path(review.book, review), remote: true,
+              method: :delete, data: {confirm: t(".sure?")} %>
+          <% end %>
+        <% end %>
+        </div>
+    </li>
+  </div>
+<% end %>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

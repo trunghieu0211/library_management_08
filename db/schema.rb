@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412204218) do
+ActiveRecord::Schema.define(version: 20180413062509) do
 
   create_table "author_books", force: :cascade do |t|
     t.integer "author_id"
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id", "book_id"], name: "index_author_books_on_author_id_and_book_id", unique: true
     t.index ["author_id"], name: "index_author_books_on_author_id"
     t.index ["book_id"], name: "index_author_books_on_book_id"
   end
@@ -28,6 +27,17 @@ ActiveRecord::Schema.define(version: 20180412204218) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.string "description"
+  end
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -55,7 +65,6 @@ ActiveRecord::Schema.define(version: 20180412204218) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_category_books_on_book_id"
     t.index ["category_id"], name: "index_category_books_on_category_id"
-    t.index [nil, nil], name: "index_category_books_on_book_and_category", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -69,6 +78,15 @@ ActiveRecord::Schema.define(version: 20180412204218) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -76,13 +94,27 @@ ActiveRecord::Schema.define(version: 20180412204218) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "book_id"
-    t.float "rate"
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_rates_on_book_id"
-    t.index ["user_id"], name: "index_rates_on_user_id"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -139,7 +171,6 @@ ActiveRecord::Schema.define(version: 20180412204218) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

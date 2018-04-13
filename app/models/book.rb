@@ -6,9 +6,10 @@ class Book < ApplicationRecord
   has_many :authors, through: :authorBooks
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :rates, dependent: :destroy
   has_many :requestBooks, dependent: :destroy
   has_many :relationships, as: :following, dependent: :destroy
+
+  ratyrate_rateable "attitude"
 
   mount_uploader :image_url, ImageUploader
   enum status: [:available, :rented]

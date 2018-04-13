@@ -24,3 +24,5 @@ publisher:
   number_publisher_page: 10
 request:
   number_request_page: 10
+review:
+  description_max_size: 500

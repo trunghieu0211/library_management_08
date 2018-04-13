@@ -27,4 +27,6 @@
 //= require colorswitcher
 //= require custom.js
 //= require cookie
+//= require jquery.raty
+//= require ratyrate
 

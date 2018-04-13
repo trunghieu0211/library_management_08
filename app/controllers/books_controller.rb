@@ -1,10 +1,18 @@
 class BooksController < ApplicationController
   before_action :load_book, except: %i(new index create)
   def index
-    @books = Book.all.book_order.page(params[:page]).per 12
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).includes(:authors, :categories, :publisher).book_order.page(params[:page]).
+      per Settings.book.number_book_page
   end
 
   def show
+    @reviews = @book.reviews.review_order.page(params[:page]).per 4
+    if @book.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @book.reviews.average(:rating).round(2)
+    end
   end
 
   private

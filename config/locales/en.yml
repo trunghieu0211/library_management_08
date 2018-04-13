@@ -59,6 +59,8 @@ en:
       top_categories: "Top Books Catagories"
       view_all: "View all"
   books:
+    index:
+      search: "Search"
     show:
       status: "Status :"
       customer_review: "customer review"
@@ -69,6 +71,7 @@ en:
       description: "Description: "
       10days: "You have 10 days from "
       to: " to "
+      rate: "Rate: "
   authors:
     index:
       read_more: "Read more"
@@ -107,6 +110,13 @@ en:
       like: "Like"
     destroy:
       unlike: "Unlike"
+  reviews:
+    form:
+      submit: "Submit"
+      add_review: "Add a review"
+      your_rating: "Your Rating"
+    review:
+      sure?: "Yor are sure?"
   admin:
     base:
       verify_admin:

@@ -107,3 +107,36 @@
     width: 207px;
     height: 197px;
 }
+.comment {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 800px;
+}
+.avatar_comment img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top:0;
+    left: 0;
+}
+.comment .reviews-detail{
+    top: 10px;
+}
+.reviews-list {
+    position: relative;
+}
+.reviews-list .pagination {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+}
+.comment {
+    height: 100px;
+}
+.edit_review {
+    height: 100px;
+}
+.search-custom {
+    margin: 0 84px;
+}

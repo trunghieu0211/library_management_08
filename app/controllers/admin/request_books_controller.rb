@@ -3,7 +3,7 @@ class Admin::RequestBooksController < Admin::BaseController
 
   def index
     @q = RequestBook.ransack(params[:q])
-    @requests = @q.result(distinct: true).request_order.page(params[:page]).
+    @requests = @q.result.includes(:user, :book).request_order.page(params[:page]).
       per Settings.request.number_request_page
     @allRequest = RequestBook.all
     respond_to do |format|
