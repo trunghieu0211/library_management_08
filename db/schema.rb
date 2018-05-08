@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413062509) do
+ActiveRecord::Schema.define(version: 20180416050902) do
 
   create_table "author_books", force: :cascade do |t|
     t.integer "author_id"
@@ -115,6 +115,16 @@ ActiveRecord::Schema.define(version: 20180413062509) do
     t.datetime "updated_at", null: false
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
     t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+  end
+
+  create_table "relationship_users", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationship_users_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationship_users_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationship_users_on_follower_id"
   end
 
   create_table "relationships", force: :cascade do |t|

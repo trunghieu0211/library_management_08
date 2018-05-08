@@ -61,6 +61,8 @@ en:
   books:
     index:
       search: "Search"
+      author: "Author: "
+      read-more: "Read More"
     show:
       status: "Status :"
       customer_review: "customer review"
@@ -100,6 +102,10 @@ en:
     update:
       success: "Update user success!"
       password_success: "Update password success!"
+    unfollow:
+      unfollow: "Unfollow"
+    follow:
+      follow: "Follow me"
   request_books:
     create:
       want_to_read: "Want to read"

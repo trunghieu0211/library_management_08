@@ -1,4 +1,5 @@
 <li>
+<% #byebug %>
   <%= form_for [@book, @book.likes.find_by(book_id: @book.id)], :method => :delete, :remote => true do |f| %>
     <%= f.hidden_field :user_id, :value=>current_user.id %>
     <%= f.hidden_field :book_id, :value=>@book.id %>

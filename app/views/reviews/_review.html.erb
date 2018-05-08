@@ -11,7 +11,14 @@
       </div>
       <div id="edit_<%= review.id %>">
         <div class="reviews-detail">
-          <h6><%= review.user.email.split("@").first %> <span><%= review.created_at %></span></h6>
+          <h6>
+            <% if review.user.name.present? %>
+              <%= review.user.name %>
+            <% else %>
+              <%= review.user.email.split("@").first %>
+            <% end %>
+            <span><%= review.created_at %></span>
+          </h6>
           <div class="average-review-rating" data-score=<%= review.rating %>></div>
           </div>
         <p><%= review.content %></p>

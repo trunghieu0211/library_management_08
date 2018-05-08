@@ -2,7 +2,9 @@ class AuthorsController < ApplicationController
   before_action :load_author, except: %i(new index create)
 
   def index
-    @authors = Author.all.author_order.page(params[:page]).per 8
+    @q = Author.ransack(params[:q])
+    @authors = @q.result(distinct: true).author_order.page(params[:page]).
+      per Settings.book.number_book_page
   end
 
   def show

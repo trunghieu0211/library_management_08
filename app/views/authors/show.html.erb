@@ -42,7 +42,7 @@
               <div id="filter-masonry" class="gallery-masonry">
               <% @author.books.each do |book| %>
                 <%= link_to book_path book do %>
-                <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-recent">
+                <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-recent book-author">
                   <div class="recommended-book">
                     <div class="recommended-book-img">
                       <% if book.image_url.present? %>
@@ -52,14 +52,10 @@
                       <% end %>
                     </div>
                       <div class="recommended-book-detail">
-                        <h6><%= book.name %></h6>
+                        <h6><%= link_to book.name, book_path(book) %></h6>
                         <span><%= @author.name %></span>
                         <ul class="rating-stars">
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star-half-o"></i></li>
+                          <div class="average-review-rating" data-score=<%= book.reviews.average(:rating) %>></div>
                         </ul>
                       </div>
                   </div>
@@ -73,3 +69,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

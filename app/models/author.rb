@@ -1,7 +1,7 @@
 class Author < ApplicationRecord
   has_many :authorBooks
   has_many :books, through: :authorBooks
-  has_many :relationships, as: :following
+  has_many :relationships, as: :following, dependent: :destroy
 
   scope :author_order, ->{order created_at: :desc}
   mount_uploader :avatar, ImageUploader

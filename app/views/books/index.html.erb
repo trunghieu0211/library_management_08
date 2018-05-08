@@ -24,11 +24,11 @@
                       <% end %>
                       <ul class="product-cart-option position-center-x">
                         <li>
-                          <%= link_to book_path book do %>
+                          <a class="btn-1 sm shadow-0" data-toggle="modal"
+                          data-target="#quick-view-<%= book.id %>" href="#">
                             <i class="fa fa-eye"></i>
-                          <% end %>
+                          </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
                       </ul>
                       <span>
                       <div class="category">
@@ -47,20 +47,16 @@
                           <div class="rating-nd-price">
                             <strong><%= book.publisher.name %></strong>
                             <ul class="rating-stars">
-                              <li><i class="fa fa-star"></i></li>
-                              <li><i class="fa fa-star"></i></li>
-                              <li><i class="fa fa-star"></i></li>
-                              <li><i class="fa fa-star"></i></li>
-                              <li><i class="fa fa-star-half-o"></i></li>
+                              <div class="average-review-rating" data-score=<%= book.reviews.average(:rating) %>></div>
                             </ul>
                           </div>
                       </div>
                       <div class="layout-2">
                         <div class="aurthor-detail">
                           <span>
-                            <b><%= t ".author" + ":" %></b>
+                            <b><%= t ".author" %></b>
                             <% book.authors.each do |author| %>
-                              <%= author.name + ", " %>
+                              <b><%= author.name %></b>
                             <% end %>
                           </span>
                         </div>
@@ -76,3 +72,56 @@
     </div>
   </div>
 </div>
+
+<% @books.each do |book_new| %>
+  <div class="modal fade quick-view" id="quick-view-<%= book_new.id %>" role="dialog">
+    <div class="position-center-center" role="document">
+      <div class="modal-content">
+        <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="single-product-detail">
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="product-thumnbnail">
+                <% if book_new.image_url.present? %>
+                  <%= image_tag book_new.image_url.to_s %>
+                <% elsif %>
+                  <%= image_tag "gray.png" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="single-product-detail">
+                <span class="availability"><%= t ".status:" %><strong><%= book_new.status %><i class="fa fa-check-circle"></i></strong></span>
+                <h3><%= book_new.name %></h3>
+                <ul class="rating-stars">
+                  <div class="average-review-rating" data-score=<%= book_new.reviews.average(:rating) %>></div>
+                </ul>
+                <h4><%= t ".overview" %></h4>
+                <p><%= book_new.description.truncate(500).to_s.html_safe  %></p>
+                <ul class="btn-list">
+                  <li>
+                    <%= link_to book_path(book_new), :class => "btn-1 sm shadow-0" do %>
+                      <%= t ".read-more" %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+

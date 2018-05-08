@@ -32,7 +32,7 @@
                 <tr role="row" class="odd" id="author-<%= author.id %>" >
                   <td><%= image_tag author.avatar.thumb.to_s %></td>
                   <td><%= author.name %></td>
-                  <td><%= raw author.description %></td>
+                  <td><%= truncate(author.description, :length => Settings.author.description_size) %></td>
                   <td class="edit_destroy">
                     <% if can? :update, author %>
                       <%= link_to edit_admin_author_path author do %>

@@ -1,2 +1,3 @@
 $('#reviews-2').prepend('<%= j render @review %>');
 $('#form-review').val('');
+$('.rating-stars').html('<div class="average-review-rating" data-score=<%= @average_review %>></div>');

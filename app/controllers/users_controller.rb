@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   before_action :load_user, except: %i(index new)
+  before_action :request_book_accept, :request_book_pending, only: :show
 
   def index
-    @users = User.all.user_order.page(params[:page]).per 8
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).user_order.page(params[:page]).
+      per Settings.book.number_book_page
   end
 
   def show
@@ -38,6 +41,14 @@ class UsersController < ApplicationController
   def user_params_update_password
     params.require(:user).permit :password,
       :password_confirmation
+  end
+
+  def request_book_pending
+    @request_book_pendings = RequestBook.where(user_id: params[:id], status: "pending")
+  end
+
+  def request_book_accept
+    @request_book_accepts = RequestBook.where(user_id: params[:id], status: "accept")
   end
 
   def load_user

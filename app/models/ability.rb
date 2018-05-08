@@ -7,9 +7,10 @@ class Ability
     if user.permision == "admin"
       can :manage, :all
     elsif user.permision == "manager"
-      can [:read, :update], :all
+      can [:read, :update], [Category, Book, Author, Publisher, RequestBook]
       cannot [:update, :create, :destroy], User
       can [:read, :update], User,  id: user.id
+      comment_permission user
     else
       can [:read, :update], User,  id: user.id
       comment_permission user

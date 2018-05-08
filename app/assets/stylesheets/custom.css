@@ -140,3 +140,10 @@
 .search-custom {
     margin: 0 84px;
 }
+.book-icon img {
+    width:  80px;
+    margin: 0px 0 -60px 0;
+}
+.book-author {
+    height: 320px;
+}

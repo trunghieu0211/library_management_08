@@ -8,7 +8,7 @@ user:
 book:
   book_length_max_size: 50
   number_book_page: 12
-  description_max_length: 1500
+  description_max_length: 3000
   max_length_title: 20
   description_size: 30
 category:

@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
-  get 'searchs/index'
+  get 'relationship_users/create'
 
-  # root "static_pages#home"
+  get 'relationship_users/desstroy'
+
   root "books#index"
   resources :books, only: %i(index show) do
     resources :request_books
     resources :likes
     resources :reviews
+    member do
+      get :following, :followers
+    end
   end
+
+  resources :relationship_users, only: [:create, :destroy]
   resources :authors, only: %i(index show)
   devise_for :users
   resources :users

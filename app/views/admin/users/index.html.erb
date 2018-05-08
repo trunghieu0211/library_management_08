@@ -42,7 +42,7 @@
                   <td><%= user.email %></td>
                   <td><%= user.permision %></td>
                   <td class="edit_destroy">
-                    <% if can? :update, user %>
+                    <% if current_user.permision == "admin" %>
                       <%= link_to edit_admin_user_path user do %>
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                       <% end %>

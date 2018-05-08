@@ -17,16 +17,31 @@
             <% end %>
           </div>
           <div class="arthor-detail">
-            <h2><%= @user.name %></h2>
+            <h2>
+              <% if @user.name.present? %>
+                <%= @user.name %>
+              <% else  %>
+                <%= @user.email.split("@").first %>
+              <% end %>
+            </h2>
             <span><%= t ".email" %><%= @user.email %></span>
           </div>
           <div class="social-activity">
             <ul class="comments-status">
               <li><i class=""></i></li>
-              <li><i class="fa fa-user-o"></i><%= t ".userfollow" %> 1,089</li>
+              <li><i class="fa fa-user-o"></i><%= t ".userfollow" %>
+              <div class="followers"><%= @user.followers.size %></div></li>
               <li><i class=""></i></li>
             </ul>
-            <a href="#" class="btn-1 sm shadow-0"><%= t ".follow_me" %></a>
+            <% unless current_user == @user %>
+              <div id="follow_form">
+              <% if current_user.following?(@user) %>
+                <%= render "unfollow" %>
+              <% else %>
+                <%= render "follow" %>
+              <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </aside>
@@ -37,84 +52,106 @@
                 <h5><%= t ".recommended" %> </h5>
                 <div class="filter-tags-holder">
                   <ul id="filterbale-nav" class="option-set">
-                    <li><a class="selected" data-filter="*" href="#">All Books</a></li>
-                    <li><a data-filter=".most-recent" href="#">Most Recent</a></li>
-                    <li><a data-filter=".most-popular" href="#">Most Popular</a></li>
-                    <li><a data-filter=".fiction" href="#">Fiction</a></li>
-                    <li><a data-filter=".free-books" href="#">Free Books</a></li>
+                    <li><a class="selected" data-filter="*" href="">All Book</a></li>
+                    <li><a data-filter=".most-recent" href="">Request_Book</a></li>
+                    <li><a data-filter=".most-popular" href="">Books Borrowed</a></li>
+                    <li><a data-filter=".follower" href="">Follower</a></li>
+                    <li><a data-filter=".following" href="">Following</a></li>
                   </ul>
                 </div>
                   <div id="filter-masonry" class="gallery-masonry">
-                    <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-recent">
-                      <div class="recommended-book">
-                        <div class="recommended-book-img">
+                    <% if @request_book_pendings %>
+                      <% @request_book_pendings.each do |request_book| %>
+                        <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-recent">
+                          <div class="recommended-book">
+                            <div class="recommended-book-img">
+                            <% if request_book.book.image_url.present? %>
+                              <%= image_tag request_book.book.image_url %>
+                            <% elsif %>
+                              <%= image_tag "gray.png" %>
+                            <% end %>
+                            </div>
+                          <div class="recommended-book-detail">
+                              <h6><%= link_to request_book.book.name, book_path(request_book.book) %></h6>
+                              <span> <% request_book.book.authors.each do |author| %>
+                                <b><%= author.name %></b>
+                              <% end %></span>
+                              <ul class="rating-stars">
+                                <div class="average-review-rating" data-score=<%= request_book.book.reviews.average(:rating) %>></div>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <div class="recommended-book-detail">
-                          <h6>Jewels of Nizam</h6>
-                          <span>By Muriel Barbery</span>
-                          <ul class="rating-stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star-half-o"></i></li>
-                          </ul>
+                      <% end %>
+                    <% end %>
+                    <% if @request_book_accepts %>
+                      <% @request_book_accepts.each do |request_book| %>
+                        <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-popular">
+                          <div class="recommended-book">
+                            <div class="recommended-book-img">
+                            <% if request_book.book.image_url.present? %>
+                              <%= image_tag request_book.book.image_url %>
+                            <% elsif %>
+                              <%= image_tag "gray.png" %>
+                            <% end %>
+                            </div>
+                          <div class="recommended-book-detail">
+                              <h6><%= link_to request_book.book.name, book_path(request_book.book) %></h6>
+                              <span> <% request_book.book.authors.each do |author| %>
+                                <b><%= author.name %></b>
+                              <% end %></span>
+                              <ul class="rating-stars">
+                                <div class="average-review-rating" data-score=<%= request_book.book.reviews.average(:rating) %>>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      <% end %>
+                    <% end %>
+                    <% if @user.followers %>
+                      <% @user.followers.each do |follower| %>
+                        <div class="col-lg-3 col-xs-6 r-full-width masonry-grid follower">
+                          <div class="recommended-book">
+                            <div class="recommended-book-img">
+                            <% if follower.avatar.present? %>
+                              <%= image_tag follower.avatar %>
+                            <% elsif %>
+                              <%= image_tag "gray.png" %>
+                            <% end %>
+                            </div>
+                          <div class="recommended-book-detail">
+                              <h6><%= link_to follower.name, user_path(follower) %></h6>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                    <% if @user.following %>
+                      <% @user.following.each do |follower| %>
+                        <div class="col-lg-3 col-xs-6 r-full-width masonry-grid following">
+                          <div class="recommended-book">
+                            <div class="recommended-book-img">
+                            <% if follower.avatar.present? %>
+                              <%= image_tag follower.avatar %>
+                            <% elsif %>
+                              <%= image_tag "gray.png" %>
+                            <% end %>
+                            </div>
+                          <div class="recommended-book-detail">
+                              <h6>
+                                <% if follower.name.present? %>
+                                  <%= link_to follower.name, user_path(follower) %>
+                                <% else  %>
+                                  <%= link_to follower.email.split("@").first,
+                                    user_path(follower) %>
+                                <% end %>
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
                     </div>
-                    <div class="col-lg-3 col-xs-6 r-full-width masonry-grid most-popular">
-                      <div class="recommended-book">
-                        <div class="recommended-book-img">
-                          <img src="images/arthor-recommended/img-02.jpg" alt="">
-                        </div>
-                        <div class="recommended-book-detail">
-                          <h6>Cakes &amp; Bakes</h6>
-                          <span>By Muriel Barbery</span>
-                          <ul class="rating-stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star-half-o"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-xs-6 r-full-width masonry-grid fiction">
-                      <div class="recommended-book">
-                        <div class="recommended-book-img">
-                          <img src="images/arthor-recommended/img-03.jpg" alt="">
-                        </div>
-                        <div class="recommended-book-detail">
-                          <h6>Jamie’s Kitchen</h6>
-                          <span>By Muriel Barbery</span>
-                          <ul class="rating-stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star-half-o"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-xs-6 r-full-width masonry-grid free-books">
-                      <div class="recommended-book">
-                        <div class="recommended-book-img">
-                          <img src="images/arthor-recommended/img-04.jpg" alt="">
-                        </div>
-                        <div class="recommended-book-detail">
-                          <h6>Inexpensive Family</h6>
-                          <span>By Muriel Barbery</span>
-                          <ul class="rating-stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star-half-o"></i></li>
-                          </ul>
-                        </div>
-                      </div>
                     </div>
                   </div>
               </div>
@@ -124,3 +161,14 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  $(".average-review-rating").raty({
+    readOnly: true,
+    path: "/assets/",
+    score: function() {
+      return $(this).attr("data-score")
+    }
+  });
+</script>

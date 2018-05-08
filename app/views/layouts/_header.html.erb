@@ -20,6 +20,11 @@
 <% else %>
 <nav class="nav-holder style-1">
   <div class="container">
+    <div class="book-icon">
+      <%= link_to root_path do %>
+        <%= image_tag "book.png" %>
+      <% end %>
+    </div>
     <div class="navigation">
       <ul>
         <li class="active">
@@ -43,7 +48,13 @@
           <% end %>
         </li>
          <li class="dropdown-icon">
-      <a href=""><i class="fa fa-file-text"></i><%= current_user.email.split("@").first %></a>
+      <a href=""><i class="fa fa-file-text"></i>
+        <% if current_user.name.present? %>
+          <%= current_user.name %>
+        <% else %>
+          <%= current_user.email.split("@").first %>
+        <% end %>
+      </a>
       <ul>
         <li>
           <%= link_to user_path current_user do %>
